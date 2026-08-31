@@ -66,7 +66,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * 4. Catch-All for unexpected runtime system failures
+     * Catch-All for unexpected runtime system failures
      */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponseDto> handleGenericException(Exception ex) {

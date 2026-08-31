@@ -1,5 +1,7 @@
 package com.smartpark.parkingmanagement.service.impl;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import com.smartpark.parkingmanagement.dto.ParkingLotDto;
@@ -17,8 +19,14 @@ public class ParkingLotServiceImpl implements ParkingLotService {
 	}
 
 	@Override
+	@Transactional
 	public ParkingLotDto registerParkingLot(ParkingLotDto parkingLotDto) {
-		System.out.println("Registering parking lot: " + parkingLotDto);
+
+		if (parkingLotRepository.existsById(parkingLotDto.getLotId())) {
+			throw new IllegalArgumentException(
+					"Parking lot with ID '" + parkingLotDto.getLotId() + "' is already registered.");
+		}
+
 		if (parkingLotDto.getOccupiedSpaces() > parkingLotDto.getCapacity()) {
 			throw new IllegalArgumentException("Occupied spaces cannot exceed capacity.");
 		}

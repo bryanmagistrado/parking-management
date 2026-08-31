@@ -1,5 +1,7 @@
 package com.smartpark.parkingmanagement.service.impl;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import com.smartpark.parkingmanagement.dto.VehicleDto;
@@ -17,10 +19,11 @@ public class VehicleServiceImpl implements VehicleService {
 	}
 
 	@Override
+	@Transactional
 	public VehicleDto registerVehicle(VehicleDto vehicleDto) {
 		if (vehicleRepository.existsById(vehicleDto.getLicensePlate())) {
 			throw new IllegalArgumentException(
-					"Vehicle with this license plate" + vehicleDto.getLicensePlate() + "already exists.");
+					"Vehicle with license plate " + vehicleDto.getLicensePlate() + " already exists.");
 		}
 
 		Vehicle vehicle = new Vehicle();
