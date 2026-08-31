@@ -1,27 +1,32 @@
 package com.smartpark.parkingmanagement.model;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+
+@Entity
+@Table(name = "parking_lots")
 public class ParkingLot {
 
-    @NotNull
-    @Size(max = 50)
+	@Id
+    @Column(name = "lot_id", nullable = false, length = 50)
     private String lotId;
-
+	
+    @Column(name = "location", nullable = false, length = 255)
     private String location;
-
-    @Min(value = 0)
-    private int capacity;
-
-    @Min(value = 0)
-    private int occupiedSpaces;
+    
+    @Column(name = "capacity", nullable = false)
+    private Integer capacity;
+    
+    @Column(name = "occupied_spaces", nullable = false)
+    private Integer occupiedSpaces;
 
     public ParkingLot() {
     }
 
-    public ParkingLot(String lotId, String location, int capacity, int occupiedSpaces) {
+    public ParkingLot(String lotId, String location, Integer capacity, Integer occupiedSpaces) {
         this.lotId = lotId;
         this.location = location;
         this.capacity = capacity;
@@ -44,19 +49,19 @@ public class ParkingLot {
         this.location = location;
     }
 
-    public int getCapacity() {
+    public Integer getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(int capacity) {
+    public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
 
-    public int getOccupiedSpaces() {
+    public Integer getOccupiedSpaces() {
         return occupiedSpaces;
     }
 
-    public void setOccupiedSpaces(int occupiedSpaces) {
+    public void setOccupiedSpaces(Integer occupiedSpaces) {
         this.occupiedSpaces = occupiedSpaces;
     }
 }
