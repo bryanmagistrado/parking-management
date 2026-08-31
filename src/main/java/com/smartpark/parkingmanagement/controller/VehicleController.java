@@ -15,19 +15,17 @@ import com.smartpark.parkingmanagement.service.VehicleService;
 @RestController
 @RequestMapping("/api/vehicles")
 public class VehicleController {
-	
-    private final VehicleService vehicleService;
-    
-    
-    public VehicleController(VehicleService vehicleService) {
-        this.vehicleService = vehicleService;
-    }
-    
-    @PostMapping
-    public ResponseEntity<VehicleDto> registerVehicle(@Valid @RequestBody VehicleDto vehicleDto) {
+
+	private final VehicleService vehicleService;
+
+	public VehicleController(VehicleService vehicleService) {
+		this.vehicleService = vehicleService;
+	}
+
+	@PostMapping
+	public ResponseEntity<VehicleDto> registerVehicle(@Valid @RequestBody VehicleDto vehicleDto) {
 		VehicleDto registeredVehicle = vehicleService.registerVehicle(vehicleDto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(registeredVehicle);
 	}
-    
 
 }
