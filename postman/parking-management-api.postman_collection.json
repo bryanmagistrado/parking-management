@@ -1,0 +1,173 @@
+{
+  "info": {
+    "_postman_id": "aa52d483-24f0-4dd0-bb55-419639bd6981",
+    "name": "Parking Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "15326353"
+  },
+  "item": [
+    {
+      "name": "1. Register Parking Lot",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"lotId\": \"LOT-NCR-QUE-000001\",\r\n  \"location\": \"SM CITY NORTH EDSA PARKING B\",\r\n  \"capacity\": 150,\r\n  \"occupiedSpaces\": 45\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/parking-lots",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "parking-lots"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Register New Vehicle",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"licensePlate\": \"NIT-2028\",\r\n  \"type\": \"CAR\",\r\n  \"ownerName\": \"Bryan Magistrovsky\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/vehicles",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "vehicles"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Check In Vehicle",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"licensePlate\": \"NIT-2026\",\r\n  \"lotId\": \"LOT-NCR-QUE-000001\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/parking/check-in",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "parking",
+            "check-in"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Check Out Vehicle",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/parking/check-out/NIT-2028",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "parking",
+            "check-out",
+            "NIT-2028"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. Get Occupancy Details",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/parking-lots/LOT-NCR-QUE-000003/occupancy",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "parking-lots",
+            "LOT-NCR-QUE-000003",
+            "occupancy"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "6. Get Parked Vehicles",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/parking-lots/LOT-NCR-QUE-000001/vehicles",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "parking-lots",
+            "LOT-NCR-QUE-000001",
+            "vehicles"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
