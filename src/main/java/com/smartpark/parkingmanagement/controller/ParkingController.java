@@ -35,5 +35,7 @@ public class ParkingController {
 		ParkingSessionResponseDto parkingSessionResponseDto = parkingService.checkOut(licensePlate);
 		return ResponseEntity.status(HttpStatus.OK).body(parkingSessionResponseDto);
 	}
+	
+	
 
 }
